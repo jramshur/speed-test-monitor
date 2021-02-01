@@ -26,10 +26,20 @@ Connect to Pi using Windows Remote Destop. Use username and password for Pi logi
 
 ### Clone repo from GitHub
     git clone https://github.com/jramshur/speed-test-monitor.git
+    git pull
+    
     cd /home/pi/speed-test-monitor
     python main.py
+    
+    #ignore local changes and pull
+    git reset --hard
+    git pull
+
 ### Set script to auto-run on bootup
 Start your script from rc.local. Just run  sudo pico /etc/rc.local  and add the line  python3 /home/pi/speed-test-monitor/main.py &  before  exit 0
+
+git reset --hard
+git pull
 
 ## Google Sheets
 https://script.google.com/macros/s/AKfycbwJn9XQELECX6C62EPEIvhyA7aPdc1HtzId-B-6EZZH0WXwDnwFg6j4/exec?DeviceID=myid&TimeStamp=100&UpSpeed=100&DownSpeed=100&Ping=100
