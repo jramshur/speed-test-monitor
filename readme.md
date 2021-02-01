@@ -1,17 +1,21 @@
 https://script.google.com/macros/s/AKfycbwJn9XQELECX6C62EPEIvhyA7aPdc1HtzId-B-6EZZH0WXwDnwFg6j4/exec?DeviceID=myid&TimeStamp=100&UpSpeed=100&DownSpeed=100&Ping=100
 
-#DEFAULT LOGIN: pi   DEFAULT PASSWORD: raspberry
+## Raspberry Pi Setup
+Default Pi login: pi
+Default Pi Password raspberry
 
-#Update Pi
+###Update Pi
+'''shell
 sudo apt update
 sudo apt upgrade
 sudo apt full-upgrade #if want to upgrade os also
+'''
 
-#Enable SSH
+####Enable SSH
 sudo systemctl enable ssh
 sudo systemctl start ssh
 
-#Change Passord
+###Change Passord
 passwd
 
 #Setup Remote Desktop
