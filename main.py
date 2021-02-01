@@ -19,8 +19,8 @@ def get_new_speeds():
 
     return (upload_mbs, download_mbs, ping)
 
-    # wait 60 seconds to allow Pi to reboot fully before running speed test. This assumes this script will be run at boot.
-    time.sleep(60)
+# wait 60 seconds to allow Pi to reboot fully before running speed test. This assumes this script will be run at boot.
+time.sleep(60)
     
 while True:
     # get current date and time
