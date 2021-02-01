@@ -16,18 +16,20 @@ Default Pi Password raspberry
 ### Change Passord
     passwd
 
-## Setup Remote Desktop
+### Setup Remote Desktop
     sudo apt install xrdp
     hostname -I
 Connect to Pi using Windows Remote Destop. Use username and password for Pi logins.
 
-## Install speedtest-cli library
-    sudo pip3 install speedtest-cli
+### Install speedtest-cli library
+    sudo pip3 install speedtest-cli 
 
-## clone repo from GitHub
+### Clone repo from GitHub
     git clone https://github.com/jramshur/speed-test-monitor.git
     cd /home/pi/speed-test-monitor
     python main.py
+### Set script to auto-run on bootup
+Start your script from rc.local. Just run  sudo pico /etc/rc.local  and add the line  /home/pi/script.py&  before exit 0
 
 ## Google Sheets
 https://script.google.com/macros/s/AKfycbwJn9XQELECX6C62EPEIvhyA7aPdc1HtzId-B-6EZZH0WXwDnwFg6j4/exec?DeviceID=myid&TimeStamp=100&UpSpeed=100&DownSpeed=100&Ping=100
