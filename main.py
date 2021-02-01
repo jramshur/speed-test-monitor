@@ -1,7 +1,7 @@
 import speedtest
-import pandas as pd
 from datetime import datetime
 import requests
+import time
 
 def get_new_speeds():
     speed_test = speedtest.Speedtest()
@@ -20,14 +20,20 @@ def get_new_speeds():
     return (upload_mbs, download_mbs, ping)
 
 
-# get current date and time
-dt = datetime.now().strftime("%d/%m/%Y %H:%M:%S") # dd/mm/YY H:M:S
+for i in range(15):
+    # get current date and time
+    dt = datetime.now().strftime("%d/%m/%Y %H:%M:%S") # dd/mm/YY H:M:S
+    
+    # get new speed test results
+    print("Speed test started.")
+    speeds = get_new_speeds()
+    print(speeds)
 
-# get new speed test results
-speeds = get_new_speeds()
-
-#publish speed test results to Google Sheets
-url='https://script.google.com/macros/s/AKfycbwJn9XQELECX6C62EPEIvhyA7aPdc1HtzId-B-6EZZH0WXwDnwFg6j4/exec'
-payload = {'DeviceID':'PI', 'TimeStamp':dt,'UpSpeed':speeds[0],'DownSpeed':speeds[1],'Ping':speeds[2]}
-response =  requests.get(url, params=payload)
-print(response.url)
+    #publish speed test results to Google Sheets
+    url='https://script.google.com/macros/s/AKfycbwJn9XQELECX6C62EPEIvhyA7aPdc1HtzId-B-6EZZH0WXwDnwFg6j4/exec'
+    payload = {'DeviceID':'PI', 'TimeStamp':dt,'UpSpeed':speeds[0],'DownSpeed':speeds[1],'Ping':speeds[2]}
+    response =  requests.get(url, params=payload)
+    print(response.url)
+    time.sleep(30*60)
+    
+print("DONE")
