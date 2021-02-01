@@ -22,7 +22,7 @@ def get_new_speeds():
 
 while True:
     # get current date and time
-    dt = datetime.now().strftime("%d/%m/%Y %H:%M:%S") # dd/mm/YY H:M:S
+    dt = datetime.now().strftime("%m/%d/%Y %H:%M:%S") # mm/dd/YY H:M:S
     
     # get new speed test results
     print("Speed test started...")
@@ -32,6 +32,6 @@ while True:
     #publish speed test results to Google Sheets
     url='https://script.google.com/macros/s/AKfycbwJn9XQELECX6C62EPEIvhyA7aPdc1HtzId-B-6EZZH0WXwDnwFg6j4/exec'
     payload = {'DeviceID':'PI', 'TimeStamp':dt,'UpSpeed':speeds[0],'DownSpeed':speeds[1],'Ping':speeds[2]}
-    response =  requests.get(url, params=payload)
+    response =  requests.get(url, params=payload) #Push speed test results
     print("Pushing Data: ", response.url)
-    time.sleep(30*60)
+    time.sleep(30*60) # wait 30 mintues between speed test
