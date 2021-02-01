@@ -22,3 +22,9 @@ hostname -I
 #Install speedtest-cli library
 sudo pip3 install speedtest-cli
 
+# clone repo from GitHub
+'''shell
+git clone https://github.com/jramshur/speed-test-monitor.git
+cd /home/pi/speed-test-monitor
+python main.py
+'''
