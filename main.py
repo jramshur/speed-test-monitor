@@ -3,6 +3,9 @@ from datetime import datetime
 import requests
 import time
 
+SHEETNAME = 'addYourSheetNameHere' # add the name of the sheet in which you want the data to be placed
+DEVICEID = 'PI' # ID to use in case you want to have multiple devices publish to the same Google Sheets worksheet
+
 def get_new_speeds():
     speed_test = speedtest.Speedtest()
     speed_test.get_best_server()
@@ -33,7 +36,7 @@ while True:
 
     #publish speed test results to Google Sheets
     url='https://script.google.com/macros/s/AKfycbwJn9XQELECX6C62EPEIvhyA7aPdc1HtzId-B-6EZZH0WXwDnwFg6j4/exec'
-    payload = {'DeviceID':'PI', 'TimeStamp':dt,'UpSpeed':speeds[0],'DownSpeed':speeds[1],'Ping':speeds[2]}
+    payload = {'SheetName':SHEETNAME,'DeviceID':DEVICEID, 'TimeStamp':dt,'UpSpeed':speeds[0],'DownSpeed':speeds[1],'Ping':speeds[2]}
     response =  requests.get(url, params=payload) #Push speed test results
     print("Pushing Data: ", response.url)
     time.sleep(30*60) # wait 30 mintues between speed test
